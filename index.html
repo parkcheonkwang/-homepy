@@ -1,1 +1,106 @@
 
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. 공통 헤더(메뉴) 주입
+  const headerContainer = document.getElementById("header-container");
+  if (headerContainer) {
+    headerContainer.innerHTML = `
+      <header class="main-header">
+        <div class="logo"><a href="index.html">올바른교회</a></div>
+        <nav class="desktop-nav">
+          <ul class="main-menu">
+            <li><a href="#">교회소개</a>
+              <ul class="dropdown">
+                <li><a href="sub_greeting.html">인사말</a></li>
+                <li><a href="#">섬기는 사람들</a></li>
+                <li><a href="#">예배안내</a></li>
+                <li><a href="#">오시는길</a></li>
+              </ul>
+            </li>
+            <li><a href="#">예배설교</a></li>
+            <li><a href="#">교회사역</a>
+              <ul class="dropdown">
+                <li><a href="#">목장모임</a></li>
+                <li><a href="#">삶공부</a></li>
+                <li><a href="#">전도및선교</a></li>
+              </ul>
+            </li>
+            <li><a href="#">교회소식</a>
+              <ul class="dropdown">
+                <li><a href="#">주보보기</a></li>
+                <li><a href="#">교회소식</a></li>
+                <li><a href="#">갤러리</a></li>
+                <li><a href="#">자료실</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <button class="hamburger-btn" id="menuOpenBtn">☰</button>
+      </header>
+
+      <!-- 모바일 및 사이트맵 슬라이드 드로어 -->
+      <div class="side-drawer" id="sideDrawer">
+        <div class="drawer-header">
+          <h3>사이트맵</h3>
+          <button class="close-btn" id="menuCloseBtn">✕</button>
+        </div>
+        <div class="drawer-body">
+          <div class="sitemap-group">
+            <h4>교회소개</h4>
+            <a href="sub_greeting.html">인사말</a>
+            <a href="#">섬기는 사람들</a>
+            <a href="#">예배안내</a>
+            <a href="#">오시는길</a>
+          </div>
+          <div class="sitemap-group">
+            <h4>예배설교</h4>
+            <a href="#">주일/수요/금요 설교</a>
+          </div>
+          <div class="sitemap-group">
+            <h4>교회사역</h4>
+            <a href="#">목장모임</a>
+            <a href="#">삶공부</a>
+            <a href="#">전도및선교</a>
+          </div>
+          <div class="sitemap-group">
+            <h4>교회소식</h4>
+            <a href="#">주보보기</a>
+            <a href="#">교회소식</a>
+            <a href="#">갤러리</a>
+            <a href="#">자료실</a>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-overlay" id="drawerOverlay"></div>
+    `;
+
+    // 슬라이드 메뉴 열기/닫기 동작
+    const openBtn = document.getElementById("menuOpenBtn");
+    const closeBtn = document.getElementById("menuCloseBtn");
+    const drawer = document.getElementById("sideDrawer");
+    const overlay = document.getElementById("drawerOverlay");
+
+    const toggleMenu = (isOpen) => {
+      drawer.classList.toggle("active", isOpen);
+      overlay.classList.toggle("active", isOpen);
+    };
+
+    openBtn.addEventListener("click", () => toggleMenu(true));
+    closeBtn.addEventListener("click", () => toggleMenu(false));
+    overlay.addEventListener("click", () => toggleMenu(false));
+  }
+
+  // 2. 공통 푸터(하단 정보) 주입
+  const footerContainer = document.getElementById("footer-container");
+  if (footerContainer) {
+    footerContainer.innerHTML = `
+      <footer class="main-footer">
+        <div class="footer-content">
+          <h2>올바른교회</h2>
+          <p><strong>담임목사:</strong> 박천광 목사님</p>
+          <p><strong>주소:</strong> 경기도 이천시 신둔면 증신로 386-181</p>
+          <p class="copyright">COPYRIGHT (C) 올바른교회. All Rights Reserved.</p>
+        </div>
+      </footer>
+    `;
+  }
+});
